@@ -49,7 +49,6 @@ function apiHandler(api, params) {
     console.log(`Handling API call ${api}`, params);
 
     switch (api) {
-        // TODO: add API implementation
         case 'show':
             show();
             break;
