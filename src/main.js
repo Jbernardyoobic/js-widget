@@ -16,9 +16,7 @@ function app(window) {
     // all methods that were called till now and stored in queue
     // needs to be called now 
     let globalObject = window[window['JS-Widget']];
-    console.log(globalObject);
     let queue = globalObject.q;
-    console.log(queue);
     if (queue) {
         for (var i = 0; i < queue.length; i++) {
             if (queue[i][0].toLowerCase() == 'init') {
@@ -39,14 +37,13 @@ function app(window) {
 /**
     Method that handles all API calls
     */
-function apiHandler(api, params) {
-    console.log(api);
+function apiHandler(api, _params) {
     if (!api) throw Error('API method required');
     api = api.toLowerCase();
 
     if (supportedAPI.indexOf(api) === -1) throw Error(`Method ${api} is not supported`);
 
-    console.log(`Handling API call ${api}`, params);
+    console.log(`Handling API call ${api}`);
 
     switch (api) {
         case 'show':
