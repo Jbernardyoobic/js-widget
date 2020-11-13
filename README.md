@@ -1,3 +1,5 @@
-## JavaScript Widget
+YOOBIC JS WIDGET
 
-This is a template for building JavaScript widget. Read [this post](https://blog.jenyay.com/building-javascript-widget/) for more details.
+> npm install
+> ./node_modules/.bin/webpack --config webpack.config.js
+> ./node_modules/.bin/webpack-dev-server --open
