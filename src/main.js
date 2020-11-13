@@ -1,7 +1,6 @@
-import { ping } from './services'
-import { show } from './views/message'
+import { call, show } from './views/message'
 
-const supportedAPI = ['init', 'message']; // enlist all methods supported by API (e.g. `mw('event', 'user-login');`)
+const supportedAPI = ['init', 'show', 'call']; // enlist all methods supported by API (e.g. `mw('event', 'user-login');`)
 
 /**
     The main entry of the application
@@ -17,7 +16,9 @@ function app(window) {
     // all methods that were called till now and stored in queue
     // needs to be called now 
     let globalObject = window[window['JS-Widget']];
+    console.log(globalObject);
     let queue = globalObject.q;
+    console.log(queue);
     if (queue) {
         for (var i = 0; i < queue.length; i++) {
             if (queue[i][0].toLowerCase() == 'init') {
@@ -39,6 +40,7 @@ function app(window) {
     Method that handles all API calls
     */
 function apiHandler(api, params) {
+    console.log(api);
     if (!api) throw Error('API method required');
     api = api.toLowerCase();
 
@@ -48,8 +50,11 @@ function apiHandler(api, params) {
 
     switch (api) {
         // TODO: add API implementation
-        case 'message':
-            show(params);
+        case 'show':
+            show();
+            break;
+        case 'call':
+            call();
             break;
         default:
             console.warn(`No handler defined for ${api}`);
